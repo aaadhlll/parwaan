@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +19,13 @@
     "url": "https://github.com/aaadhlll/parwaan/issues"
   },
   "homepage": "https://github.com/aaadhlll/parwaan#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@mdx-js/loader": "^3.1.1",
+    "@next/mdx": "^16.0.3",
+    "next": "^16.0.3",
+    "next-mdx-remote": "^5.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
 }
