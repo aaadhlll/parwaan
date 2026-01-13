@@ -3,8 +3,8 @@ import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Adhil",
-  lastName: "KV",
-  name: `Adhil KV`,
+  lastName: "Kv",
+  name: `Adhil Kv`,
   role: "AI Prompt Engineer",
   avatar: "/images/avatar.jpg",
   email: "aaaadhllkv@gmail.com",
@@ -93,9 +93,9 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Designing, Crafting and Optimizing prompts for AI systems, training them to navigate diverse scenarios effectively, 
+        and ensuring seamless operations. Refining prompts to guide AI systems effectively, 
+        ensuring they produce accurate and contextually relevant outputs
       </>
     ),
   },
@@ -154,12 +154,12 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Camerin Folks",
+        description: <>AI and Data Science.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "P A College of Engineering",
+        description: <>Coumputer Science Engineering.</>,
       },
     ],
   },
@@ -168,7 +168,7 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "Python",
         description: (
           <>Able to prototype in Figma with Once UI with unnatural speed.</>
         ),
