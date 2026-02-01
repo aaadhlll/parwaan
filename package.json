@@ -23,9 +23,20 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@next/mdx": "^16.0.3",
+    "@once-ui-system/core": "^1.5.14",
+    "classnames": "^2.5.1",
+    "cookie": "^1.1.1",
+    "gray-matter": "^4.0.3",
     "next": "^16.0.3",
     "next-mdx-remote": "^5.0.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "saas": "^1.0.0",
+    "sass": "^1.97.2",
+    "transliteration": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.0.8",
+    "typescript": "5.9.3"
   }
 }

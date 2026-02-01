@@ -3,6 +3,7 @@ import "@once-ui-system/core/css/tokens.css";
 import "@/resources/custom.css";
 
 import classNames from "classnames";
+import { cookies } from "next/headers";
 
 import {
   Background,
@@ -13,7 +14,7 @@ import {
   RevealFx,
   SpacingToken,
 } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
+import { ChatWidget, Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
@@ -31,6 +32,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const isAuthenticated = cookieStore.get("authToken")?.value === "authenticated";
+
   return (
     <Flex
       suppressHydrationWarning
@@ -162,6 +166,7 @@ export default async function RootLayout({
               <RouteGuard>{children}</RouteGuard>
             </Flex>
           </Flex>
+          {isAuthenticated && <ChatWidget isAuthenticated={isAuthenticated} />}
           <Footer />
         </Column>
       </Providers>

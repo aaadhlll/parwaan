@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 import { CustomMDX, ScrollToHash } from "@/components";
+import LoginForm from "@/components/Auth/LoginForm";
+import LogoutButton from "@/components/Auth/LogoutButton";
 import {
   Meta,
   Schema,
@@ -70,6 +73,18 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       src: person.avatar,
     })) || [];
 
+  // Check server-side cookie for simple auth
+  const cookieStore = await cookies();
+  const isAuthenticated = cookieStore.get("authToken")?.value === "authenticated";
+
+  // Provide a short excerpt for unauthenticated users
+  const excerptParagraphs = post.content
+    .split(/\n\s*\n/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("\n\n");
+  const excerpt = excerptParagraphs || post.metadata.summary || "";
+
   return (
     <Row fillWidth>
       <Row maxWidth={12} m={{ hide: true }} />
@@ -124,7 +139,24 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             />
           )}
           <Column as="article" maxWidth="s">
-            <CustomMDX source={post.content} />
+            {isAuthenticated && (
+              <Row marginBottom="16" horizontal="end">
+                <LogoutButton />
+              </Row>
+            )}
+            {isAuthenticated ? (
+              <CustomMDX source={post.content} />
+            ) : (
+              <>
+                <CustomMDX source={excerpt} />
+                <Column marginTop="24">
+                  <Text variant="body-default-m" onBackground="neutral-weak">
+                    Want to read the full post? Please authenticate to continue.
+                  </Text>
+                  <LoginForm />
+                </Column>
+              </>
+            )}
           </Column>
           
           <ShareSection 
