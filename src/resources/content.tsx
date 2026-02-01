@@ -2,12 +2,12 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Adhil",
-  lastName: "Kv",
-  name: `Adhil Kv`,
-  role: "AI Prompt Engineer",
+  firstName: "Jouhar",
+  lastName: "Ali K V",
+  name: `Jouhar Ali K V`,
+  role: "Software Engineer",
   avatar: "/images/avatar.jpg",
-  email: "aaaadhllkv@gmail.com",
+  email: "jouharalikv@gmail.com",
   location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Malayalam"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -24,12 +24,12 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/aaadhlll",
+    link: "https://github.com/jou-ali",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/in/aaaadhll/",
+    link: "https://www.linkedin.com/in/jouharalikv/",
   },
   {
     name: "Threads",
@@ -39,7 +39,7 @@ const social: Social = [
   {
     name: "Email",
     icon: "email",
-    link: `aaaadhllkv@gmail.com`,
+    link: `jouharalikv@gmail.com`,
   },
 ];
 

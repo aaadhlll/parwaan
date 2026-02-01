@@ -3,10 +3,12 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
+import { Button, Card, Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
+import LoginForm from "./Auth/LoginForm";
+import LogoutButton from "./Auth/LogoutButton";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
@@ -44,6 +46,42 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const checkAuth = async () => {
+      try {
+        const res = await fetch("/api/check-auth", {
+          method: "GET",
+          credentials: "include",
+        });
+        if (!isMounted) return;
+        setIsAuthenticated(res.ok);
+      } catch (err) {
+        if (!isMounted) return;
+        setIsAuthenticated(false);
+      }
+    };
+
+    checkAuth();
+    const intervalId = window.setInterval(checkAuth, 30000);
+    window.addEventListener("focus", checkAuth);
+
+    return () => {
+      isMounted = false;
+      window.clearInterval(intervalId);
+      window.removeEventListener("focus", checkAuth);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setAuthOpen(false);
+    }
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -185,6 +223,34 @@ export const Header = () => {
           >
             <Flex s={{ hide: true }}>
               {display.time && <TimeDisplay timeZone={person.location} />}
+            </Flex>
+            <Flex className={styles.authArea} vertical="center">
+              {isAuthenticated ? (
+                <LogoutButton onSuccess={() => setIsAuthenticated(false)} />
+              ) : (
+                <>
+                  <Button
+                    size="s"
+                    variant="secondary"
+                    onClick={() => setAuthOpen((prev) => !prev)}
+                    className={styles.authButton}
+                  >
+                    Login
+                  </Button>
+                  {authOpen && (
+                    <Card
+                      padding="12"
+                      radius="l"
+                      background="surface"
+                      border="neutral-alpha-weak"
+                      shadow="l"
+                      className={styles.authDropdown}
+                    >
+                      <LoginForm onSuccess={() => setIsAuthenticated(true)} layout="column" />
+                    </Card>
+                  )}
+                </>
+              )}
             </Flex>
           </Flex>
         </Flex>

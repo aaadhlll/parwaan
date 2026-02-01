@@ -8,6 +8,24 @@
     mask-size: 100% 100%;
 }
 
+.authArea {
+    position: relative;
+    align-items: center;
+}
+
+.authButton {
+    border-radius: 999px;
+    padding-inline: 14px;
+}
+
+.authDropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    width: 320px;
+    z-index: 20;
+}
+
 @media (max-width: breakpoints.$s) {
     .position {
         top: auto;
@@ -17,5 +35,9 @@
     .mask {
         transform: rotate(180deg);
         bottom: 0;
+    }
+
+    .authDropdown {
+        width: min(90vw, 320px);
     }
 }
