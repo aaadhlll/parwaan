@@ -22,7 +22,7 @@
     position: absolute;
     right: 0;
     top: calc(100% + 10px);
-    width: 320px;
+    width: 360px;
     z-index: 20;
 }
 
@@ -38,6 +38,6 @@
     }
 
     .authDropdown {
-        width: min(90vw, 320px);
+        width: min(90vw, 360px);
     }
 }

@@ -7,7 +7,7 @@ import { Button, Card, Fade, Flex, Line, Row, ToggleButton } from "@once-ui-syst
 
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
-import LoginForm from "./Auth/LoginForm";
+import AuthPanel from "./Auth/AuthPanel";
 import LogoutButton from "./Auth/LogoutButton";
 import styles from "./Header.module.scss";
 
@@ -185,6 +185,25 @@ export const Header = () => {
                   </Row>
                 </>
               )}
+              {routes["/donate"] && (
+                <>
+                  <Row s={{ hide: true }}>
+                    <ToggleButton
+                      prefixIcon="rocket"
+                      href="/donate"
+                      label="Donate"
+                      selected={pathname === "/donate"}
+                    />
+                  </Row>
+                  <Row hide s={{ hide: false }}>
+                    <ToggleButton
+                      prefixIcon="rocket"
+                      href="/donate"
+                      selected={pathname === "/donate"}
+                    />
+                  </Row>
+                </>
+              )}
               {routes["/gallery"] && (
                 <>
                   <Row s={{ hide: true }}>
@@ -246,7 +265,10 @@ export const Header = () => {
                       shadow="l"
                       className={styles.authDropdown}
                     >
-                      <LoginForm onSuccess={() => setIsAuthenticated(true)} layout="column" />
+                      <AuthPanel
+                        onAuthenticated={() => setIsAuthenticated(true)}
+                        onClose={() => setAuthOpen(false)}
+                      />
                     </Card>
                   )}
                 </>

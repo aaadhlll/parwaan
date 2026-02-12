@@ -1,0 +1,31 @@
+.panel {
+  width: 100%;
+}
+
+.tabs {
+  width: 100%;
+}
+
+.tabButton {
+  flex: 1;
+  justify-content: center;
+}
+
+.tabActive {
+  flex: 1;
+  justify-content: center;
+  border: 1px solid var(--once-color-border-brand-alpha);
+  background: color-mix(in srgb, var(--once-color-surface-brand) 12%, transparent);
+}
+
+.form {
+  width: 100%;
+}
+
+.footerRow {
+  width: 100%;
+}
+
+.linkButton {
+  padding-inline: 8px;
+}
